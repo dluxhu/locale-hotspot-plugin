@@ -15,11 +15,12 @@
    limitations under the License.
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="hu.dlux.android.locale.hotspot" android:versionCode="1"
-	android:versionName="0.1" android:installLocation="internalOnly">
+	package="hu.dlux.android.locale.hotspot" android:versionCode="2"
+	android:versionName="0.2" android:installLocation="internalOnly">
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="9" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
 	<application android:label="@string/app_name" android:icon="@drawable/icon">
 		<!-- This Activity comes from the Locale Platform. If this plug-in does 
 			not stand alone (e.g. it is only a plug-in for Locale), including this in 

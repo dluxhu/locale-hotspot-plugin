@@ -31,20 +31,18 @@ public class LowLevelHotspotApi {
 	}
 
 	public void changeHotspotState(boolean enable) {
-		WifiManager wifiManager = (WifiManager) context
-				.getSystemService(Context.WIFI_SERVICE);
+		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
 		// Turn off Wifi if the hotspot is to be enabled.
 		if (enable) {
 			wifiManager.setWifiEnabled(false);
 		}
 		try {
+			Object wifiConfig = wifiManager.getClass().getMethod("getWifiApConfiguration").invoke(wifiManager);
 			wifiManager.getClass()
-				.getMethod("setWifiApEnabled",
-						   WifiConfiguration.class,
-						   boolean.class)
-			    .invoke(wifiManager, null, enable);
+				.getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class)
+			    .invoke(wifiManager, wifiConfig, enable);
 		} catch (Exception e) {
-			Log.e(Constants.TAG, "Cannot call: setWifiApEnabled", e);
+			Log.e(Constants.TAG, "Cannot enable/disable wifi hotspot", e);
 		}
 	}
 }
