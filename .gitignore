@@ -1,0 +1,6 @@
+.hg
+.hgignore
+.hgtags
+bin
+gen
+target

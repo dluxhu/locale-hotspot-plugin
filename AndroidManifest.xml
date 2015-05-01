@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2011 Balazs Szabo (dLux) <http://www.dlux.hu>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="hu.dlux.android.locale.hotspot" android:versionCode="1"
+	android:versionName="0.1" android:installLocation="internalOnly">
+	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="9" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<application android:label="@string/app_name" android:icon="@drawable/icon">
+		<!-- This Activity comes from the Locale Platform. If this plug-in does 
+			not stand alone (e.g. it is only a plug-in for Locale), including this in 
+			the manifest will help when users tap the "Open" button in the Android Market. -->
+		<activity android:name="com.twofortyfouram.locale.MarketActivity"
+			android:label="@string/app_name" android:icon="@drawable/icon"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.INFO" />
+			</intent-filter>
+		</activity>
+		<!-- This is the "edit" Activity -->
+		<activity android:name=".setting.EditActivity" android:label="@string/plugin_name"
+			android:icon="@drawable/icon" android:exported="true">
+			<!-- this Intent filter allows the plug-in to be discovered by Locale -->
+			<intent-filter>
+				<action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
+			</intent-filter>
+		</activity>
+		<!-- This is the "fire" BroadcastReceiver -->
+		<receiver android:name=".setting.FireReceiver"
+			android:exported="true">
+			<!-- this Intent filter allows the plug-in to discovered by Locale and 
+				be fired -->
+			<intent-filter>
+				<action android:name="com.twofortyfouram.locale.intent.action.FIRE_SETTING" />
+			</intent-filter>
+		</receiver>
+	</application>
+</manifest>

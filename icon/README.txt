@@ -1,0 +1,1 @@
+See the NOTICE file in the project root for terms of use of the icon.
